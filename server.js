@@ -8,11 +8,21 @@ app.get('/', (req, res) => {
 	res.send('Hello World');
 });
 
-app.get('/teste', (req, res) => {
+app.post('/teste', (req, res) => {
+	const { cnpj } = req.body;
 	console.log('Validando procura no Banco de Dados');
-	connection.query('SELECT * FROM clientes WHERE cnpj = 20321476000156;', (err, results, fields) => {
-		console.log(results);
-		console.log(fields);
+	connection.query(`SELECT * FROM clientes WHERE cnpj = ${cnpj};`, (err, results, fields) => {
+		if (err) {
+			console.error(err);
+		}
+		if (results.length > 0) {
+			const n = results.length;
+			for (let i = 0; i < n; i++) {
+				console.log(`CNPJ existente.. ${results[i]}`);
+			}
+		} else {
+			console.log(`cnpj ${cnpj} inexistente...`);
+		}
 		res.send(`Resultado: ${JSON.stringify(results)}`);
 	});
 });
