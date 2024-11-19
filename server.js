@@ -30,53 +30,36 @@ app.post('/teste', (req, res) => {
 app.post('/cadastrar', async (req, res) => {
 	const { comprador, recebedor, cnpj, telefone, celular, email, email_faturado, atividade, cep, logradouro, numero, complemento } = req.body;
 
-	// Primeiro, verificar se o cliente já existe
-	const checkQuery = `SELECT COUNT(*) AS count FROM clientes WHERE cnpj = ${cnpj}`;
-
-	connection.query(checkQuery, (err, results, fields) => {
-		console.log(results);
-		if (results[0].count > 0) {
-			console.log('Cliente já existente...');
-			res.status(400).json({ messasge: 'Cliente já cadastrado com este cnpj.' });
+	connection.query(`SELECT * FROM clientes WHERE cnpj = ${cnpj}`, (err, results, fields) => {
+		if (err) {
+			console.error(err);
 		}
-		console.log('Cliente não encontrado para o CNPJ fornecido');
-	});
-	const query = `
-				INSERT INTO clientes (comprador, recebedor, cnpj, telefone, celular, email, email_faturado, atividade, cep, logradouro, numero, complemento)
-            	VALUES (${comprador}, ${recebedor}, ${cnpj}, ${telefone}, ${celular}, ${email}, ${email_faturado}, ${atividade}, ${cep}, ${logradouro}, ${numero}, ${complemento})
-			`;
-	connection.query(query, (err, results, fields) => {
-		res.status(500).json({ message: `${err}` });
+		if (results) {
+			console.log(fields);
+			res.send('OK');
+			if (results[0].count > 0) {
+				console.log('Cliente já existente...');
+			}
+		}
 	});
 
-	// try {
-	// 	// Realizando a consulta para verificar a existência do email
-	// 	console.log('Verificando existência...');
-	// 	const [checkResult] = await connection.execute(checkQuery, checkValues).then((data) => {
-	// 		console.log(data);
-	// 	});
-	// 	// Se o cliente já existe, retorna um erro
-	// 	if (checkResult[0].count > 0) {
-	// 		console.log('Cliente já existe...');
-	// 		res.status(400).json({ message: 'Cliente já cadastrado com este email.' });
-	// 	}
-	// 	console.log('Cliente não encontrado para o email fornecido');
-
-	// 	// Se o cliente não existe, insere no banco de dados
-	// 	const query = `
-	//         INSERT INTO clientes (comprador, recebedor, cnpj, telefone, celular, email, email_faturado, atividade, cep, logradouro, numero, complemento)
-	//         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+	// const insertQuery = `
+	//         INSERT INTO clientes (
+	//             comprador, recebedor, cnpj, telefone, celular, email, email_faturado, atividade, cep, logradouro, numero, complemento
+	//         )
+	//         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 	//     `;
+	// connection.query(insertQuery, [comprador, recebedor, cnpj, telefone, celular, email, email_faturado, atividade, cep, logradouro, numero, complemento], (err, results) => {
+	// 	if (err) {
+	// 		console.error(err);
+	// 		res.status(500).json({ message: `${err}` });
+	// 	}
+	// 	res.status(201).json({ message: 'Cliente cadastrado com sucesso!', results });
+	// });
+});
 
-	// 	const values = [comprador, recebedor, cnpj, telefone, celular, email, email_faturado, atividade, cep, logradouro, numero, complemento].map((value) => (value === undefined ? null : value));
-
-	// 	const [result] = await connection.execute(query, values);
-
-	// 	res.status(201).json({ message: 'Cliente cadastrado com sucesso!', clienteId: result.insertId });
-	// } catch (error) {
-	// 	console.error('Erro ao cadastrar cliente:', error);
-	// 	res.status(500).json({ message: 'Erro ao cadastrar cliente.' });
-	// }
+app.post('/delete', async (req, res) => {
+	const { cnpj } = req.body;
 });
 
 app.listen(port, () => {
