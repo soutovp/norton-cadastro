@@ -1,0 +1,50 @@
+<div class="content-box">
+  <h1>Banco de Dados - Norton Distribuidora</h1>
+  <form id="form_cadastro_comprador">
+    <div>
+      <div size="full-width" left>
+        <label for="nome_comprador">Nome Comprador</label>
+        <input id="nome_comprador" class="form-control rounded-form" type="text" placeholder="Insira o Nome do Comprador" />
+      </div>
+    </div>
+    <div>
+      <div size="full-width" left>
+        <label for="mail_comprador_contato">E-mail Contato Comprador</label>
+        <input id="mail_comprador_contato" class="form-control rounded-form" type="text" placeholder="Insira o E-mail de Contato do Comprador" />
+      </div>
+    </div>
+    <div>
+      <div size="full-width" left>
+        <label for="mail_comprador_faturamento">E-mail Faturamento</label>
+        <input id="mail_comprador_faturamento" class="form-control rounded-form" type="text" placeholder="Insira o Nome do Comprador" />
+      </div>
+    </div>
+    <div>
+      <input type="submit" value="Cadastrar" />
+    </div>
+  </form>
+</div>
+<div class="content-box">
+  <h2>Cadastros</h2>
+  <div class="content-inside-medium">
+    <div class="flex-col">
+      <select name="comprador" id="comprador">
+        <option value="loading">Loading...</option>
+      </select>
+      <div class="content-separate">
+        <button class="btn" model="load" onclick="carregarComprador()">Carregar</button>
+        <button class="btn" model="delete" onclick="deleteComprador()">Deletar</button>
+      </div>
+    </div>
+  </div>
+  <div class="content-inside-large">
+    <table id="table_compradores">
+      <tr>
+        <td>Comprador</td>
+        <td>E-mail</td>
+        <td>E-mail Faturamento</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<%- include('./js/cadastro/puxar_dados.ejs') %>

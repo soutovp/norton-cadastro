@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./views/styles/style.css">
+  <title>Banco de dados - <%= data.title %>
+  </title>
+  <%- include('../styles/reset_css.ejs') %>
+  <%- include('../styles/template_css.ejs') %>
+  <%- include('../styles/menu_css.ejs') %>
+
+<body>
+  <%- include('../snippets/menu.ejs') %>
+  <%- include('../showcase/'+data.page) %>
+</body>
+
+</html>

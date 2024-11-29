@@ -10,7 +10,8 @@ h1 {
 	font-weight: 600;
 	font-family: sans-serif;
 }
-#form_cadastro {
+#form_cadastro,
+#form_cadastro_comprador {
 	display: block;
 	margin: auto;
 	font-family: sans-serif;
@@ -23,19 +24,22 @@ h1 {
 	background-color: #fff;
 	box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.05);
 }
-#form_cadastro > div {
+#form_cadastro > div,
+#form_cadastro_comprador > div {
 	margin-bottom: 10px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: 10px;
 }
-#form_cadastro > div label {
+#form_cadastro > div label,
+#form_cadastro_comprador > div label {
 	width: 200px;
 	text-align: right;
 	padding-right: 15px;
 }
-#form_cadastro input {
+#form_cadastro input,
+#form_cadastro_comprador input {
 	border-radius: 5px;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	padding: 10px;
@@ -43,21 +47,25 @@ h1 {
 	font-size: 1em;
 	color: rgba(0, 26, 103, 0.8);
 }
-#form_cadastro > div > div input {
+#form_cadastro > div > div input,
+#form_cadastro_comprador > div > div input {
 	width: 100%;
 }
-#form_cadastro > div:last-of-type input {
+#form_cadastro > div:last-of-type input,
+#form_cadastro_comprador > div:last-of-type input {
 	width: 100%;
 	background-color: rgba(0, 26, 103, 0.8);
 	color: #fff;
 	font-weight: 900;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 }
-#form_cadastro > div:last-of-type input:hover {
+#form_cadastro > div:last-of-type input:hover,
+#form_cadastro_comprador > div:last-of-type input:hover {
 	background-color: rgb(115, 194, 115);
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	color: #fff;
 	font-weight: 900;
+	cursor: pointer;
 }
 [left] {
 	text-align: left;

@@ -1,67 +1,51 @@
 import express from 'express';
-import { connection } from './connection.js';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import 'ejs';
+//Routes
+import { router as compradoresRoutes } from './src/cadastros/compradoresRoutes.js';
+import { router as compradoresApi } from './src/api/comprador.js';
+import { router as empresasRoutes } from './src/cadastros/empresasRoutes.js';
 const app = express();
 const port = 80;
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+const allowedOrigins = ['http://127.0.0.1:5500', 'http://127.0.0.1:80', 'http://192.168.118.188'];
+app.use(
+	cors({
+		origin: (origin, callback) => {
+			if (!origin || allowedOrigins.includes(origin)) {
+				callback(null, true); // Permite a requisição
+			} else {
+				callback(new Error('Não permitido pela política de CORS')); // Bloqueia a requisição
+			}
+		},
+		methods: ['GET', 'POST', 'PUT', 'DELETE'],
+		allowedHeaders: ['Content-Type', 'Authorization'],
+	})
+);
+app.set('view engine', 'ejs');
+app.set('views', './views');
+app.use('/cadastros/compradores', compradoresRoutes);
+app.use('/cadastros/empresas', empresasRoutes);
+app.use('/api', compradoresApi);
 
 app.get('/', (req, res) => {
-	res.send('Hello World');
-});
-
-app.post('/teste', (req, res) => {
-	const { cnpj } = req.body;
-	console.log('Validando procura no Banco de Dados');
-	connection.query(`SELECT * FROM clientes WHERE cnpj = ${cnpj};`, (err, results, fields) => {
-		if (err) {
-			console.error(err);
-		}
-		if (results.length > 0) {
-			const n = results.length;
-			for (let i = 0; i < n; i++) {
-				console.log(`CNPJ existente.. ${results[i]}`);
-			}
-		} else {
-			console.log(`cnpj ${cnpj} inexistente...`);
-		}
-		res.send(`Resultado: ${JSON.stringify(results)}`);
+	res.render('home/home.ejs', {
+		data: {
+			title: 'Norton Distribuidora',
+			page: 'index.ejs',
+		},
 	});
 });
-
-app.post('/cadastrar', async (req, res) => {
-	const { comprador, recebedor, cnpj, telefone, celular, email, email_faturado, atividade, cep, logradouro, numero, complemento } = req.body;
-
-	connection.query(`SELECT * FROM clientes WHERE cnpj = ${cnpj}`, (err, results, fields) => {
-		if (err) {
-			console.error(err);
-		}
-		if (results) {
-			console.log(fields);
-			res.send('OK');
-			if (results[0].count > 0) {
-				console.log('Cliente já existente...');
-			}
-		}
+app.get('/cadastro/comprador', (req, res) => {
+	res.render('home/home.ejs', {
+		data: {
+			title: 'Cadstro',
+			page: 'cadastro.ejs',
+		},
 	});
-
-	// const insertQuery = `
-	//         INSERT INTO clientes (
-	//             comprador, recebedor, cnpj, telefone, celular, email, email_faturado, atividade, cep, logradouro, numero, complemento
-	//         )
-	//         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-	//     `;
-	// connection.query(insertQuery, [comprador, recebedor, cnpj, telefone, celular, email, email_faturado, atividade, cep, logradouro, numero, complemento], (err, results) => {
-	// 	if (err) {
-	// 		console.error(err);
-	// 		res.status(500).json({ message: `${err}` });
-	// 	}
-	// 	res.status(201).json({ message: 'Cliente cadastrado com sucesso!', results });
-	// });
 });
-
-app.post('/delete', async (req, res) => {
-	const { cnpj } = req.body;
-});
-
 app.listen(port, () => {
 	console.log(`Ouvindo a porta ${port}`);
 });
