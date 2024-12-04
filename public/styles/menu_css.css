@@ -1,0 +1,21 @@
+.menu {
+	background: #000;
+}
+
+.menu ul {
+	display: flex;
+	flex-direction: row;
+}
+
+.menu li > a {
+	display: block;
+	padding: 15px;
+	color: #fff;
+	text-transform: none;
+	text-decoration: none;
+}
+
+.menu li > a:hover {
+	background-color: #fff;
+	color: #000;
+}

@@ -1,6 +1,6 @@
 <div class="content-box">
   <h1>Banco de Dados - Norton Distribuidora</h1>
-  <form id="form_cadastro_comprador">
+  <form id="form_cadastro_comprador" class="form">
     <div>
       <div size="full-width" left>
         <label for="nome_comprador">Nome Comprador</label>
@@ -22,6 +22,11 @@
     <div>
       <input type="submit" value="Cadastrar" />
     </div>
+    <div class="content-inside-medium">
+      <p id="resultCadastro" style="text-align: center;">
+
+      </p>
+    </div>
   </form>
 </div>
 <div class="content-box">
@@ -35,6 +40,11 @@
         <button class="btn" model="load" onclick="carregarComprador()">Carregar</button>
         <button class="btn" model="delete" onclick="deleteComprador()">Deletar</button>
       </div>
+      <div class="content-inside-medium">
+        <p id="resultCompradores" style="text-align: center;">
+
+        </p>
+      </div>
     </div>
   </div>
   <div class="content-inside-large">
@@ -47,4 +57,4 @@
     </table>
   </div>
 </div>
-<%- include('./js/cadastro/puxar_dados.ejs') %>
+<%- include('../js/puxar_dados.ejs') %>

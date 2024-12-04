@@ -1,0 +1,64 @@
+<div class="content-box">
+  <h1>Cadastro de Cliente</h1>
+  <form id="form_cadastro_geral">
+    <div class="comprador column">
+      <h2>Comprador</h2>
+      <div>
+        <label for="nomeComprador">Nome do Comprador</label>
+        <input type="text" name="nomeComprador" id="nomeComprador" placeholder="Ex.: João Silva">
+      </div>
+      <div size="full-width">
+        <label for="mailContato">E-mail Contato</label>
+        <div class="row input">
+          <input class="input-nostyle" type="email" name="mailContato" id="mailContato" aria-invalid="true" placeholder="exemplo@email.com">
+          <div id="mailContato-check"></div>
+        </div>
+      </div>
+      <div>
+        <label for="mailFaturado">E-mail Faturado</label>
+        <input type="text" name="mailFaturado" id="mailFaturado" placeholder="Ex.: faturamento@email.com">
+      </div>
+    </div>
+    <div class="empresa">
+      <h2>Empresa</h2>
+      <div>
+        <label for="nomeEmpresa">Razão Social</label>
+        <input type="text" name="nomeEmpresa" id="nomeEmpresa" placeholder="Ex.: EMPRESA DE ALIMENTOS LTDA.">
+      </div>
+      <div>
+        <label for="cnpj">CNPJ</label>
+        <input type="text" name="cnpj" id="cnpj" placeholder="00.000.000/0001-00">
+      </div>
+    </div>
+    <div class="endereco">
+      <h2>Endereço</h2>
+      <div>
+        <label for="logradouro">Logradouro</label>
+        <input type="text" name="logradouro" id="logradouro" placeholder="Ex.: Rua logo ali">
+      </div>
+      <div>
+        <label for="numero">Número</label>
+        <input type="number" name="numero" id="numero" placeholder="Ex.: 38">
+      </div>
+      <div>
+        <label for="complemento">Complemento</label>
+        <input type="text" name="complemento" id="complemento" placeholder="Ex.: Ao lado dali">
+      </div>
+      <div>
+        <label for="cep">CEP</label>
+        <input type="text" name="cep" id="cep" placeholder="00000-000">
+      </div>
+      <div>
+        <label for="cidade">Cidade</label>
+        <input type="text" name="cidade" id="cidade" placeholder="Ex.: Rio de Janeiro">
+      </div>
+      <div>
+        <label for="bairro">Bairro</label>
+        <input type="text" name="bairro" id="bairro" placeholder="Ex.: Jacarepaguá">
+      </div>
+    </div>
+    <div class="submit">
+      <input type="submit" value="Cadastrar">
+    </div>
+  </form>
+</div>

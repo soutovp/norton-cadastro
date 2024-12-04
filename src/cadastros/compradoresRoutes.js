@@ -1,8 +1,6 @@
-import e from 'express';
-export const router = e.Router();
 import { connection } from '../../connection.js';
 
-router.post('/cadastrar', async (req, res) => {
+export default async function comprador(req, res) {
 	const { nome_comprador, mail_comprador_contato, mail_comprador_faturamento } = req.body;
 
 	if (!nome_comprador || !mail_comprador_contato || !mail_comprador_faturamento) {
@@ -19,4 +17,4 @@ router.post('/cadastrar', async (req, res) => {
 		}
 		res.status(201).json({ message: 'Comprador inserido com sucesso!', id: result.insertId });
 	});
-});
+}

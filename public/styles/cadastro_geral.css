@@ -1,0 +1,109 @@
+h1 {
+	font-size: 2em;
+}
+h2 {
+	margin-bottom: 15px;
+}
+.column {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+}
+.input {
+	border: 2px solid rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+}
+.input:focus,
+.input:focus-visible,
+.input:focus-within {
+	border: 2px solid black;
+}
+.row {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	align-items: center;
+}
+
+.icn {
+	margin: 0 15px;
+}
+.input-nostyle {
+	border: none !important;
+	background-color: none !important;
+	outline: none !important;
+}
+#nomeEmpresa {
+	text-transform: uppercase;
+	font-size: 0.8em !important;
+}
+#form_cadastro_geral > div:first-of-type {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+#form_cadastro_geral > div:last-of-type {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+#form_cadastro_geral > div {
+	display: block;
+	margin: auto;
+	font-family: sans-serif;
+	font-size: 1.2em;
+	max-width: 600px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 0;
+	padding: 15px 10px;
+	text-align: center;
+	background-color: #fff;
+}
+#mailContato-check {
+	line-height: 0;
+}
+#mailContato-check > img {
+	margin: 0 15px;
+	width: 24px;
+}
+#form_cadastro_geral > div > div {
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+}
+
+#form_cadastro_geral > div > div label {
+	width: 200px;
+	text-align: right;
+	padding-right: 15px;
+}
+
+#form_cadastro_geral > div input {
+	border-radius: 5px;
+	border: 2px solid rgba(0, 0, 0, 0.2);
+	padding: 10px;
+	width: 100%;
+	font-size: 1em;
+	color: rgba(0, 26, 103, 0.8);
+}
+
+#form_cadastro_geral > div > div > div input {
+	width: 100%;
+}
+
+#form_cadastro_geral > div.submit input {
+	width: 100%;
+	background-color: rgba(0, 26, 103, 0.8);
+	color: #fff;
+	font-weight: 900;
+	border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+#form_cadastro_geral > div.submit input:hover {
+	background-color: rgb(115, 194, 115);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	color: #fff;
+	font-weight: 900;
+	cursor: pointer;
+}

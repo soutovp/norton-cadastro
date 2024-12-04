@@ -1,15 +1,20 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import 'ejs';
 //Routes
-import { router as compradoresRoutes } from './src/cadastros/compradoresRoutes.js';
-import { router as compradoresApi } from './src/api/comprador.js';
-import { router as empresasRoutes } from './src/cadastros/empresasRoutes.js';
+import { router as api } from './src/api/api.js';
+import { router as cadastro } from './src/cadastros/cadastros.js';
+import { router as webRoutes } from './src/routes/routes.js';
 const app = express();
 const port = 80;
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use('/static', express.static(path.join(__dirname, 'public')));
 const allowedOrigins = ['http://127.0.0.1:5500', 'http://127.0.0.1:80', 'http://192.168.118.188'];
 app.use(
 	cors({
@@ -26,26 +31,10 @@ app.use(
 );
 app.set('view engine', 'ejs');
 app.set('views', './views');
-app.use('/cadastros/compradores', compradoresRoutes);
-app.use('/cadastros/empresas', empresasRoutes);
-app.use('/api', compradoresApi);
+app.use('/cadastros', cadastro);
+app.use('/api', api);
+app.use('/', webRoutes);
 
-app.get('/', (req, res) => {
-	res.render('home/home.ejs', {
-		data: {
-			title: 'Norton Distribuidora',
-			page: 'index.ejs',
-		},
-	});
-});
-app.get('/cadastro/comprador', (req, res) => {
-	res.render('home/home.ejs', {
-		data: {
-			title: 'Cadstro',
-			page: 'cadastro.ejs',
-		},
-	});
-});
 app.listen(port, () => {
 	console.log(`Ouvindo a porta ${port}`);
 });

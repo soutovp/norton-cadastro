@@ -4,16 +4,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./views/styles/style.css">
-  <title>Banco de dados - <%= data.title %>
+  <link rel="stylesheet" href="/static/styles/reset_css.css">
+  <link rel="stylesheet" href="/static/styles/menu_css.css">
+  <link rel="stylesheet" href="/static/styles/template_css.css">
+  <% if (data.styles) { %>
+  <% for( index in data.styles ) { %>
+  <link rel="stylesheet" href="/static/styles/<%= data.styles[index] %>.css">
+  <% } %>
+  <% } %>
+  <title>DB - <%= data.title %>
   </title>
-  <%- include('../styles/reset_css.ejs') %>
-  <%- include('../styles/template_css.ejs') %>
-  <%- include('../styles/menu_css.ejs') %>
+</head>
 
 <body>
   <%- include('../snippets/menu.ejs') %>
   <%- include('../showcase/'+data.page) %>
+  <% if (data.scripts) { %>
+  <% for( index in data.scripts ) { %>
+  <script src="/static/scripts/<%= data.scripts[index] %>"></script>
+  <% } %>
+  <% } %>
 </body>
 
 </html>
