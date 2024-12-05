@@ -1,4 +1,4 @@
-import { connection } from '../../connection.js';
+import { connection } from '../../../connection.js';
 export default function getEmpresaCnpj(req, res) {
 	const { cnpj } = req.body;
 

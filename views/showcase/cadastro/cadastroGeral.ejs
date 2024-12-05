@@ -5,60 +5,68 @@
       <h2>Comprador</h2>
       <div>
         <label for="nomeComprador">Nome do Comprador</label>
-        <input type="text" name="nomeComprador" id="nomeComprador" placeholder="Ex.: João Silva">
+        <input type="text" name="Nome do Comprador" id="nomeComprador" placeholder="Ex.: João Silva" required>
       </div>
       <div size="full-width">
         <label for="mailContato">E-mail Contato</label>
         <div class="row input">
-          <input class="input-nostyle" type="email" name="mailContato" id="mailContato" aria-invalid="true" placeholder="exemplo@email.com">
+          <input class="input-nostyle" type="email" name="E-mail de Contato" id="mailContato" placeholder="exemplo@email.com" required>
           <div id="mailContato-check"></div>
         </div>
       </div>
       <div>
         <label for="mailFaturado">E-mail Faturado</label>
-        <input type="text" name="mailFaturado" id="mailFaturado" placeholder="Ex.: faturamento@email.com">
+        <input type="text" name="E-mail Faturado" id="mailFaturado" placeholder="Ex.: faturamento@email.com">
       </div>
     </div>
     <div class="empresa">
       <h2>Empresa</h2>
       <div>
         <label for="nomeEmpresa">Razão Social</label>
-        <input type="text" name="nomeEmpresa" id="nomeEmpresa" placeholder="Ex.: EMPRESA DE ALIMENTOS LTDA.">
+        <input type="text" name="Nome da Empresa" id="nomeEmpresa" placeholder="Ex.: EMPRESA DE ALIMENTOS LTDA.">
       </div>
       <div>
         <label for="cnpj">CNPJ</label>
-        <input type="text" name="cnpj" id="cnpj" placeholder="00.000.000/0001-00">
+        <div class="row input">
+          <input type="text" class="input-nostyle" maxlength="18" name="CNPJ" id="cnpj" placeholder="00.000.000/0001-00">
+          <div id="cnpj-check"></div>
+        </div>
       </div>
     </div>
     <div class="endereco">
       <h2>Endereço</h2>
       <div>
         <label for="logradouro">Logradouro</label>
-        <input type="text" name="logradouro" id="logradouro" placeholder="Ex.: Rua logo ali">
+        <input type="text" name="Logradouro" id="logradouro" placeholder="Ex.: Rua logo ali">
       </div>
       <div>
         <label for="numero">Número</label>
-        <input type="number" name="numero" id="numero" placeholder="Ex.: 38">
+        <input type="number" name="Número" id="numero" placeholder="Ex.: 38">
       </div>
       <div>
         <label for="complemento">Complemento</label>
-        <input type="text" name="complemento" id="complemento" placeholder="Ex.: Ao lado dali">
+        <input type="text" name="Complemento" id="complemento" placeholder="Ex.: Ao lado dali">
       </div>
       <div>
         <label for="cep">CEP</label>
-        <input type="text" name="cep" id="cep" placeholder="00000-000">
+        <input type="text" name="CEP" id="cep" placeholder="00000-000">
       </div>
       <div>
         <label for="cidade">Cidade</label>
-        <input type="text" name="cidade" id="cidade" placeholder="Ex.: Rio de Janeiro">
+        <input type="text" name="Cidade" id="cidade" placeholder="Ex.: Rio de Janeiro">
       </div>
       <div>
         <label for="bairro">Bairro</label>
-        <input type="text" name="bairro" id="bairro" placeholder="Ex.: Jacarepaguá">
+        <input type="text" name="Bairro" id="bairro" placeholder="Ex.: Jacarepaguá">
       </div>
     </div>
     <div class="submit">
       <input type="submit" value="Cadastrar">
+    </div>
+    <div class="response">
+      <ul id="response">
+
+      </ul>
     </div>
   </form>
 </div>

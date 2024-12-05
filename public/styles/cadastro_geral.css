@@ -41,10 +41,18 @@ h2 {
 #form_cadastro_geral > div:first-of-type {
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
+	border-bottom: none;
 }
 #form_cadastro_geral > div:last-of-type {
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+	border-top: none;
+}
+#form_cadastro_geral > .empresa {
+	border-bottom: none;
+}
+#form_cadastro_geral > .endereco {
+	border-bottom: none;
 }
 #form_cadastro_geral > div {
 	display: block;
@@ -61,7 +69,8 @@ h2 {
 #mailContato-check {
 	line-height: 0;
 }
-#mailContato-check > img {
+#mailContato-check > img,
+#cnpj-check img {
 	margin: 0 15px;
 	width: 24px;
 }
@@ -102,8 +111,23 @@ h2 {
 
 #form_cadastro_geral > div.submit input:hover {
 	background-color: rgb(115, 194, 115);
-	border: 1px solid rgba(0, 0, 0, 0.1);
 	color: #fff;
 	font-weight: 900;
 	cursor: pointer;
+}
+.response {
+	display: flex !important;
+	flex-direction: column !important;
+	justify-content: center !important;
+	align-items: center !important;
+}
+#response {
+	display: block !important;
+	width: 50%;
+	margin: auto;
+	text-align: start;
+	list-style-type: disc;
+}
+#response > p {
+	margin: 5px 0;
 }
